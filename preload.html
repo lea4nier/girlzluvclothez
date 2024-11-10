@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <style>
+        /* Reset margins and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Full-screen video */
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Button styling */
+        #playButton {
+            position: relative;
+            z-index: 10;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            margin-bottom: 5%;
+            /* Positioning to the bottom third */
+        }
+
+        #playButton img {
+            width: 50px;
+            /* Adjust width as needed */
+            height: auto;
+            /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+
+<body>
+    <video autoplay loop muted playsinline>
+        <source src="assets/video/1video1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Button to navigate to video.html -->
+    <button id="playButton" onclick="location.href='video.html'">
+        <img src="assets/images/play.png" alt="Play Button">
+    </button>
+</body>
+
+</html>
