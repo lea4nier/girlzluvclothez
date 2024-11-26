@@ -86,7 +86,7 @@
     <div class="frame">
         <div class="name-form">
             <h2>Hey gurl!! What's your name?</h2>
-            <form id="nameForm" onsubmit="return handleFormSubmit();">
+            <form id="nameForm">
                 <input type="text" id="username" name="username" placeholder="Your Name" required>
                 <br>
                 <button type="submit">Submit</button>
@@ -95,19 +95,35 @@
     </div>
 
     <script>
-        function handleFormSubmit() {
-            // Prevent the default form submission
+        document.getElementById("nameForm").addEventListener("submit", async function (event) {
             event.preventDefault();
 
-            // Get the value of the username input
-            const username = document.getElementById('username').value;
+            const username = document.getElementById("username").value;
+            let data = new FormData();
+            data.append("username", username)
 
-            // Redirect to chapter_1.html with the username as a query parameter
-            window.location.href = `chapter_1.html?username=${encodeURIComponent(username)}`;
-            return false; // Prevent further propagation
-        }
+            // Send data to the PHP backend
+            const response = await fetch('name.php', {
+                method: 'POST',
+                // headers: { 'Content-Type': 'application/json' },
+                body: data,
+            });
+
+            const result = await response.text();
+            console.log(result);
+
+            // Redirect to the next page with the username
+            if (response.ok) {
+
+                  // Set session variables
+              
+   
+               window.location.href = `chapter_1.php`;
+            } else {
+                console.error("Error submitting username");
+            }
+        });
     </script>
 </body>
-
 
 </html>

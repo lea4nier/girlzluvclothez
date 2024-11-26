@@ -1,16 +1,35 @@
 class MainScene extends Phaser.Scene {
+
+
     constructor() {
         super('MainScene');
+        this.username = ''
     }
 
     preload() {
+
         this.load.image('background', 'assets/images/background.gif');
         this.load.image('character', 'assets/images/barbie.png');
         this.load.image('phone', 'assets/images/phone.png');
         this.load.image('nextButton', 'assets/images/play.png'); // Load button image
+
+        let self = this;
+        let res = fetch("getUser.php")
+            .then(function (res) {
+                return res.json()
+
+            })
+            .then(function (data) {
+                console.log(data)
+                self.username = data.username
+
+            })
+        // let resJSON = await res.json();
+        // console.log(resJSON);
+
     }
 
-    create(username) {
+    create() {
         // Create the background
         this.background = this.add.tileSprite(0, 0, this.scale.width, this.scale.height, 'background')
             .setOrigin(0, 0);
@@ -44,7 +63,7 @@ class MainScene extends Phaser.Scene {
         });
 
         // Add speech bubble text centered on the phone
-        const text = this.add.text(phone.x, phone.y, "Hey! ", {
+        const text = this.add.text(phone.x, phone.y, `Hey! ${this.username}`, {
             font: "24px 'Crafty Girls'",
             fill: "#ff00d4"
         }).setOrigin(0.5, 5);
