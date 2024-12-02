@@ -2,17 +2,47 @@
 <html>
 
 <head>
-    <title>Webcam.js Example</title>
+    <title>Chage everything about yourself</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
     <style>
         #camera {
             width: 640px;
-            /* Set explicit width */
             height: 480px;
-            /* Set explicit height */
             border: 2px solid #ff00d4;
             border-radius: 10px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Crack images */
+        .crack {
+            position: absolute;
+            z-index: 2;
+            width: 150px;
+            height: auto;
+            pointer-events: none;
+        }
+
+        /* Crack positions */
+        .crack1 {
+            top: 20px;
+            left: 50px;
+        }
+
+        .crack2 {
+            top: 200px;
+            left: 300px;
+        }
+
+        .crack3 {
+            top: 100px;
+            left: 500px;
+        }
+
+        .crack4 {
+            top: 350px;
+            left: 100px;
         }
     </style>
 </head>
@@ -20,6 +50,12 @@
 <body>
     <h1>Fix Yourself.</h1>
     <div id="camera"></div>
+
+    <!-- Crack images -->
+    <img src="assets/images/crack.png" class="crack crack1" alt="Screen Crack">
+    <img src="assets/images/crack.png" class="crack crack2" alt="Screen Crack">
+    <img src="assets/images/crack.png" class="crack crack3" alt="Screen Crack">
+    <img src="assets/images/crack.png" class="crack crack4" alt="Screen Crack">
 
     <script>
         // Attach webcam to a visible and styled element
