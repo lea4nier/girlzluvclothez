@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.min.js"></script>
     <script src="scenes/MainScene.js"></script> <!-- Path to your MainScene file -->
     <script src="scenes/Room.js"></script> <!-- Path to Room file -->
-    <script src="scenes/Money.js"></script> <!-- Path to Room file -->
+    <!-- <script src="scenes/Money.js"></script> Path to Room file -->
     <script src="main.js" defer></script> <!-- Path to your main.js, using defer -->
 
     <style>

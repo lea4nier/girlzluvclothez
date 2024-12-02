@@ -4,8 +4,7 @@ const config = {
     height: window.innerHeight,
     scene: [
         MainScene,
-        Room,
-        Money
+        Room
     ], // Include your MainScene here
 };
 

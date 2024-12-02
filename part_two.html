@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part Two</title>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.min.js"></script>
+    <script src="scenes/Money.js"></script> <!-- Path to your Money.js file -->
+    <script src="scenes/Win.js"></script> <!-- Path to your Money.js file -->
+    <script src="scenes/Collect.js"></script>
+    <script src="scenes/Ad.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // Game configuration
+        const config = {
+            type: Phaser.AUTO,
+            width: window.innerWidth,
+            height: window.innerHeight,
+            scene: [Money, Win, Collect, Ad], // Load the Money scene
+        };
+
+        // Initialize the Phaser game
+        const game = new Phaser.Game(config);
+    </script>
+</body>
+
+</html>
