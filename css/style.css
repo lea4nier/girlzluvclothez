@@ -1,7 +1,7 @@
 body {
 	/* background: #e89ba8;
 	color: #fff; */
-    background-image: url('image/background.jpg'); /* Replace with your image path */
+    background-image: url('background_image/background4.jpg'); /* Replace with your image path */
     background-size: cover; /* Ensures the image covers the entire container */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents the image from repeating */
@@ -16,15 +16,17 @@ body {
 .game-board {
 	display: grid;
 	grid-template-columns: repeat(3, 125px);
-	grid-gap: 10px;
-	justify-content: center;
-	margin: 33px auto;
+	grid-gap: 5px;
+	justify-content: flex-start;
+	margin-left: 280px;
+
+	/* margin: 33px auto; */
 }
 
 card {
 	width: 125px;
 	height: 150px;
-	background-color: #d6c8d2;
+	background-color: #e699d0;
 	border-radius: 10px;
 	display: flex;
 	justify-content: center;
@@ -32,11 +34,17 @@ card {
 	font-size: 3rem;
 	color: white;
 	cursor: pointer;
+
 }
 
 card:hover {
 	background-color: #e9b3d8;
 }
+
+card.dragover {
+    border-color: #6c5ce7;
+}
+
 .empty {
 	z-index: -1;
 	cursor: default;
@@ -73,13 +81,14 @@ card.flipped {
 	display:none;
 }
 .directions{
-	background: #db41b4;
-	color: #0c0b0b;
+	background: rgb(216, 54, 124);
+	color: #ffffff;
+	box-shadow: 10px 10px 15px rgb(137, 22, 72);
 	width: 150px;
 	padding: 10px;
 	position: fixed;
-	top: 0;
-	right:10px;
+	top: 200px;
+	right:50px;
 	max-height:60px;
 	font-family: sans-serif;
 	font-size: 12px;
@@ -101,6 +110,7 @@ card img {
     top: 10px;
     left: 10px;
     background-color: #ff66cc; /* Pink color */
+	box-shadow: 10px 10px 15px rgb(137, 22, 72);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -124,11 +134,193 @@ card img {
     font-size: 20px;
     color: #ca1c7c;
     background-color: rgb(230, 210, 210);
- }
 
- #competition {
-    background-image: url('image/competition.jpg'); /* Replace with your image path */
-    background-size: cover; /* Ensures the image covers the entire container */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
  }
+/* Style for the custom alert */
+.alert-container {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+	margin-top: 60px;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /*Make sure the alert is on top*/
+	
+}
+
+.alert-box {
+    background-color: rgb(216, 54, 124); /* Set the background color to pink */
+	color: white;
+    padding: 20px;
+    border-radius: 1px;
+    text-align: center;
+    width: 300px;
+	box-shadow: 10px 10px 15px rgb(137, 22, 72);
+	border-radius: 5px; /* Rounded corners */
+
+}
+
+
+#closeAlert {
+    background-color: #f084b6; /* Light pink button */
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#closeAlert:hover {
+    background-color: #e154cc; /* Slightly darker pink on hover */
+}
+
+#dress_up {
+	width: 150px; /* Set width */
+	height: 550px ; 
+	position: absolute;
+    top: 0; /* Align to the top */
+    right: 0; /* Align to the right */
+	margin-top: 30px;
+	margin: 80px; /* Optional: Add some spacing */
+	right: 200px; /* Adjust this value to control distance from the right */
+  }
+
+#headDrop {
+	width: 150px;
+	height: 130px;
+	top: 0; /* Align to the top */
+    right: 0; /* Align to the right */
+	margin: 80px; /* Optional: Add some spacing */
+	right: 190px;
+	margin-top: 15px;
+	position: absolute;
+	z-index: 10;
+
+  }
+
+#headDrop > img {
+	width:130px;
+	height: auto
+}
+
+#face1Drop {
+	width: 150px;
+	height: 130px;
+	top: 0; /* Align to the top */
+    right: 0; /*Align to the right*/
+	right: 400px;
+	margin-top: 35px;
+	position: absolute;
+	/* background-color: #1f25d3; */
+	z-index: 10;
+}
+
+#face1Drop > img {
+	width:130px;
+	height: auto;
+}
+
+#face2Drop {
+	width: 150px;
+	height: 130px;
+	top: 0; /* Align to the top */
+    right: 0; /*Align to the right*/ 
+	right: 150px;
+	margin-top: 35px;
+	position: absolute;
+	z-index: 10;
+}
+
+#face2Drop > img {
+	width:130px;
+	height: 120px;
+}
+
+#bodyDrop {
+	width: 150px;
+	height: 130px;
+	top: 0; /* Align to the top */
+    right: 0; /* Align to the right */
+	margin: 80px; /* Optional: Add some spacing */
+	right: 190px;
+	margin-top: 170px;
+	position: absolute;
+	z-index: 10;
+}
+
+#bodyDrop > img {
+	width:100px;
+	height: 120px;
+}
+
+#bootDrop {
+	width: 150px;
+	height: 100px;
+	top: 0; /* Align to the top */
+    right: 0; /* Align to the right */
+	margin: 80px; /* Optional: Add some spacing */
+	right: 190px;
+	margin-top: 530px;
+	position: absolute;
+}
+
+#bootDrop > img {
+	width:100px;
+	height: auto
+}
+
+#pantDrop {
+	width: 150px;
+	height: 350px;
+	top: 0; /* Align to the top */
+    right: 0; /* Align to the right */
+	margin: 80px; /* Optional: Add some spacing */
+	right: 190px;
+	margin-top: 270px;
+	position: absolute;
+}
+
+#pantDrop > img {
+	width:100px;
+	height: auto;
+
+}
+
+#bagDrop {
+	width: 150px;
+	height: 170px;
+	top: 0; /* Align to the top */
+    right: 0; /*Align to the right*/
+	right: 160px;
+	margin-top: 250px;
+	position: absolute;
+	z-index: 10;
+}
+
+#bagDrop > img {
+	width:100px;
+	height: 120px;
+
+}
+
+#accessoryDrop {
+	width: 150px;
+	height: 130px;
+	top: 0; /* Align to the top */
+    right: 0; /*Align to the right*/
+	right: 400px;
+	margin-top: 250px;
+	position: absolute;
+	z-index: 10;
+}
+
+#accessoryDrop > img {
+	width:130px;
+	height: auto;
+}
+
+#imagegallery {
+	width: 80%;
+	height: 20%;
+}

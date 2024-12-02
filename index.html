@@ -1,65 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GURLZ LUV CLOTHEZ</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GURLZ LUV CLOTHEZ</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
 
-    <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js></script>
-    
+	<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js></script>
+
 </head>
-<body>
-    <!-- code from codepen : https://codepen.io/calm/pen/BaXRBjw -->
-    
-    <div class="extrainfo">extra info</div>
-<h2 class="directions">Click inside of the boxes to change outfit item.</h2>
-<div id="game-board" class="game-board">
 
-	<card class="face">
-		<img src="" alt="">
-	</card>
-	<card class="head">
-		<img src="" alt="">
-	</card>
-	<card class="face">
-		<img src="" alt="">
-	</card>
-	<!-- 	head 
+<body>
+
+	<script>
+		function allowDrop(ev) {
+			ev.preventDefault();
+		}
+
+		function drag(ev) {
+			ev.dataTransfer.setData("text", ev.target.id);
+			console.log("drag")
+		}
+
+		function drop(ev) {
+			ev.preventDefault();
+			console.log(ev.target)
+
+			var data = ev.dataTransfer.getData("text");
+
+			//make sure the right data is being dragged in its appropriate box!
+
+			//head drop
+			if (ev.target.id === "headDrop" && data === "head") {
+				ev.target.appendChild(document.getElementById(data));
+			}
+
+			//face1 drop
+			if (ev.target.id === "face1Drop" && data === "face1") {
+				ev.target.appendChild(document.getElementById(data));
+			}
+
+			//face2 drop
+			if (ev.target.id === "face2Drop" && data === "face2") {
+				ev.target.appendChild(document.getElementById(data));
+			}
+
+			//body drop
+			if (ev.target.id === "bodyDrop" && data === "body") {
+				ev.target.appendChild(document.getElementById(data));
+			}
+
+			//bottom drop
+			if (ev.target.id === "pantDrop" && data === "pants") {
+				ev.target.appendChild(document.getElementById(data));
+			}
+
+			//boot drop
+			if (ev.target.id === "bootDrop" && data === "boot") {
+				ev.target.appendChild(document.getElementById(data));
+			}
+
+			//bag drop
+			if (ev.target.id === "bagDrop" && data === "leftarm") {
+				ev.target.appendChild(document.getElementById(data));
+			}
+
+			//accessory drop
+			if (ev.target.id === "accessoryDrop" && data === "rightarm") {
+				ev.target.appendChild(document.getElementById(data));
+			}
+
+
+
+
+		}
+	</script>
+
+	<!-- code from codepen : https://codepen.io/calm/pen/BaXRBjw -->
+	<img id="dress_up" src="images/dress_up.png" alt="dress up doll" />
+	<div class="extrainfo">extra info</div>
+	<h2 class="directions">Drag and drop the items to the mannequin</h2>
+	<div id="headDrop" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	<div id="face1Drop" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	<div id="face2Drop" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	<div id="bodyDrop" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	<div id="pantDrop" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	<div id="bootDrop" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	<div id="bagDrop" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	<div id="accessoryDrop" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+
+	<div id="game-board" class="game-board">
+
+		<card class="face">
+
+			<img id="face1" src="" alt="" draggable="true" ondragstart="drag(event)">
+		</card>
+		<card class="head">
+			<img id="head" src="" alt="" draggable="true" ondragstart="drag(event)">
+		</card>
+		<card class="face">
+			<img id="face2" src="" alt="" draggable="true" ondragstart="drag(event)">
+		</card>
+		<!-- 	head 
  face -->
-	<card class="rightarm">
-		<img src="" alt="">
-	</card>
-	<card class="body">
-		<img src="" alt="">
-	</card>
-	<card class="leftarm">
-		<img src="" alt="">
-	</card>
-	<!-- 	right arm
+		<card class="rightarm">
+			<img id="rightarm" src="" alt="" draggable="true" ondragstart="drag(event)">
+		</card>
+		<card class="body">
+			<img id="body" src="" alt="" draggable="true" ondragstart="drag(event)">
+		</card>
+		<card class="leftarm">
+			<img id="leftarm" src="" alt="" draggable="true" ondragstart="drag(event)">
+		</card>
+		<!-- 	right arm
 	body 
 	left arm -->
-	<card class="empty"></card>
-	<card class="pants">
-		<img src="" alt="">
-	</card>
-	<card class="empty"></card>
-	<!-- 	pants -->
-	<card class="empty"></card>
-	<card class="boots">
-		<img src="" alt="">
-	</card>
-	<card class="empty"></card>
-</div>
+		<card class="empty"></card>
+		<card class="pants">
+			<img id="pants" src="" alt="" draggable="true" ondragstart="drag(event)">
+		</card>
+		<card class="empty"></card>
+		<!-- 	pants -->
+		<card class="empty"></card>
+		<card class="boots">
+			<img id="boot" src="" alt="" draggable="true" ondragstart="drag(event)">
+		</card>
+		<card class="empty"></card>
+	</div>
 
-<form action="competition.html" method="GET">
-    <button id="submitButton" type="submit">Submit</button>
-</form>
+	<form action="competition.html" method="GET">
+		<button id="submitButton" type="submit">Submit</button>
+	</form>
 
-<div id="timer">Time left: <span id="time">60</span> seconds</div>
+	<div id="timer">Time left: <span id="time">60</span> seconds</div>
+	<!-- Audio file for the click sound -->
+	<audio id="clickSound" src="sounds/click.mp3"></audio>
+	<audio id="countdown" src="sounds/countdown.mp3"></audio>
+
+	<!-- Custom Alert-->
+	<div id="customAlert" class="alert-container">
+		<div class="alert-box">
+			<p id="alertMessage">This is your alert message!</p>
+			<button id="closeAlert">OK</button>
+		</div>
+	</div>
 
 
 
-    <script src="js/script.js"></script>
+
+	<script src="js/script.js"></script>
 </body>
+
 </html>
