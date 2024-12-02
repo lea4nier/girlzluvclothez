@@ -68,7 +68,21 @@ class Win extends Phaser.Scene {
             // Proceed to the next action or scene
             this.scene.start('Collect'); // Replace 'NextScene' with the actual next scene name
         });
+
+        // Add the "button" image after all ads appear
+        this.time.delayedCall(allAdImages.length * 1000 + 1000, () => {
+            const adButton = this.add.sprite(this.scale.width / 2, this.scale.height - 50, 'ad_button')
+                .setInteractive()
+                .setScale(0.09)
+                .setDepth(1); // Ensure button is on top layer
+
+            // Button functionality to go to the 'Break' scene
+            adButton.on('pointerdown', () => {
+                this.scene.start('Break'); // Transition to the 'Break' scene
+            });
+        });
     }
+
 
     update() {
         // Scrolling background effect

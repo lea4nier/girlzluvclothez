@@ -20,6 +20,8 @@ class Ad extends Phaser.Scene {
         jpgImages.forEach(image => {
             this.load.image(image, `assets/images/${image}.jpg`);
         });
+
+        this.load.image('ad_button', 'assets/images/play.png');
     }
 
     create() {
@@ -63,22 +65,20 @@ class Ad extends Phaser.Scene {
             });
         });
 
-        // Add button to go to the next scene
-        const nextButton = this.add.sprite(this.scale.width / 2, this.scale.height - 50, 'nextButton')
-            .setInteractive()
-            .setScale(0.09);
+        // Delay adding the button until all animations are complete
+        const buttonDelay = allAdImages.length * 1000 + 1500; // Delay after all ads and their fade-in animations
+        this.time.delayedCall(buttonDelay, () => {
+            const adButton = this.add.sprite(this.scale.width / 2, this.scale.height - 50, 'ad_button')
+                .setInteractive()
+                .setScale(0.09)
+                .setDepth(1); // Ensure the button is above all images
 
-        // Button functionality to go to the 'Collect' scene
-        nextButton.on('pointerdown', () => {
-            this.scene.start('Collect'); // Transition to the 'Collect' scene
+            // Button functionality to go to the 'Break' scene
+            adButton.on('pointerdown', () => {
+                this.scene.start('Break'); // Transition to the 'Break' scene
+            });
         });
 
-        // Button text
-        this.add.text(this.scale.width / 2, this.scale.height - 100, 'Next', {
-            font: "24px Arial",
-            fill: "#ffffff",
-            align: 'center'
-        }).setOrigin(0.5);
     }
 
     update() {
