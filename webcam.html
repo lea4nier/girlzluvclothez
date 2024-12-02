@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Webcam.js Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+    <style>
+        #camera {
+            width: 640px;
+            /* Set explicit width */
+            height: 480px;
+            /* Set explicit height */
+            border: 2px solid #ff00d4;
+            border-radius: 10px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Fix Yourself.</h1>
+    <div id="camera"></div>
+
+    <script>
+        // Attach webcam to a visible and styled element
+        Webcam.set({
+            width: 640, // Match the dimensions set in CSS
+            height: 480,
+            image_format: 'jpeg',
+            jpeg_quality: 90
+        });
+
+        Webcam.attach('#camera');
+    </script>
+</body>
+
+</html>

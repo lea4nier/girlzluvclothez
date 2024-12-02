@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Competition Starts</title>
   <style>
     /* Fullscreen image styling */
@@ -14,11 +16,49 @@
       background: url('css/image/competition.jpg') no-repeat center center;
       background-size: cover;
     }
+
+    /* Reset margins and padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Button styling */
+    #playButton {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: pointer;
+      border: none;
+      background: transparent;
+    }
+
+    #playButton img {
+      width: 50px;
+      /* Adjust width as needed */
+      height: auto;
+      /* Maintain aspect ratio */
+    }
   </style>
 </head>
 
 <body>
   <div id="competition"></div>
+
+  <!-- Button to go back to the Phaser scene -->
+  <button id="playButton">
+    <img src="assets/images/play.png" alt="Play Button">
+  </button>
+
+  <script>
+    // Attach event listener to button
+    document.getElementById('playButton').addEventListener('click', function () {
+      // Redirect back to the Phaser game and trigger the 'Money' scene
+      window.location.href = 'chapter_1.php?scene=Money';
+    });
+  </script>
 </body>
 
 </html>

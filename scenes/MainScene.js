@@ -49,12 +49,25 @@ class MainScene extends Phaser.Scene {
         const phone = this.add.sprite(this.scale.width / 3, this.scale.height + 100, 'phone');
         phone.setScale(0.5);
 
+        // After the phone's animation is complete, add a "shake" effect
         this.tweens.add({
             targets: phone,
             y: this.scale.height / 2,
             duration: 2000,
-            ease: 'Bounce.easeOut'
+            ease: 'Bounce.easeOut',
+            onComplete: () => {
+                // Start the shaking effect after the phone is in place
+                this.tweens.add({
+                    targets: phone,
+                    angle: { from: -3, to: 3 }, // Rotate slightly back and forth
+                    duration: 300, // Duration for one shake cycle
+                    ease: 'Sine.easeInOut',
+                    repeat: -1, // Infinite repeat
+                    yoyo: true, // Reverse direction for a "back and forth" effect
+                });
+            }
         });
+
 
         // Make the phone interactive
         phone.setInteractive();
