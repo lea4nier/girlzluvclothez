@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Chage everything about yourself</title>
+    <title>Change everything about yourself</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
     <style>
         #camera {
@@ -44,6 +44,16 @@
             top: 350px;
             left: 100px;
         }
+
+        /* Phone image */
+        #phone {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            cursor: pointer;
+            z-index: 3;
+        }
     </style>
 </head>
 
@@ -57,6 +67,9 @@
     <img src="assets/images/crack.png" class="crack crack3" alt="Screen Crack">
     <img src="assets/images/crack.png" class="crack crack4" alt="Screen Crack">
 
+    <!-- Phone image -->
+    <img src="assets/images/phone.png" id="phone" alt="Phone">
+
     <script>
         // Attach webcam to a visible and styled element
         Webcam.set({
@@ -67,6 +80,11 @@
         });
 
         Webcam.attach('#camera');
+
+        // Add click event listener to the phone image
+        document.getElementById('phone').addEventListener('click', function () {
+            window.location.href = 'forum.php';  // Redirect to forum.php
+        });
     </script>
 </body>
 
